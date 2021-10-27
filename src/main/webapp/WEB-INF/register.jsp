@@ -29,5 +29,27 @@
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+
+<%--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>--%>
+<script>
+        $.get('${pageContext.request.contextPath}/register',
+
+        $(document).getElementById(function isEmptyAlert() {
+            if ("username" == null) {
+                alert("Empty field. Must fill in Username")
+            } else if ("password" == null) {
+                    alert("Empty field. Must fill in Password")
+            } else if ("email" == null) {
+                        alert("Empty field. Must fill in Email")
+                } else if ("confirm_password" == null) {
+                            alert("Empty field. Must confirm password.")}
+                    {
+                        alert("Thank you for registering.")
+                          }
+             })
+        )
+
+    </script>
+
 </body>
 </html>

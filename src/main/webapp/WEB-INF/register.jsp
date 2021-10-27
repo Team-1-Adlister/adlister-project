@@ -30,25 +30,31 @@
         </form>
     </div>
 
-<%--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>--%>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
         $.get('${pageContext.request.contextPath}/register',
 
-        $(document).getElementById(function isEmptyAlert() {
-            if ("username" == null) {
+        $(document).getElementById(function registerValidation() {
+
+            let userName = document.forms["register"]["username"].value;
+            let passWord = document.forms["register"]["password"].value;
+            let eMail = document.forms["register"]["email"].value;
+            let confirmPassword = document.forms["register"]["confirm_password"].value;
+
+            if (userName == "") {
                 alert("Empty field. Must fill in Username")
-            } else if ("password" == null) {
+            } else if (passWord == "") {
                     alert("Empty field. Must fill in Password")
-            } else if ("email" == null) {
+                } else if ("eMail" == "") {
                         alert("Empty field. Must fill in Email")
-                } else if ("confirm_password" == null) {
-                            alert("Empty field. Must confirm password.")}
-                    {
-                        alert("Thank you for registering.")
-                          }
+                     } else if ("confirm_password" != passWord) {
+                            alert("Passwords do not match. Please confirm correct password.")}
+                         {
+                             alert("Thank you for registering.")
+                                }
+            return false;
              })
         )
-
     </script>
 
 </body>

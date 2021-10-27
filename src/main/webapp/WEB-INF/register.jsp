@@ -45,14 +45,14 @@
                 alert("Empty field. Must fill in Username")
             } else if (passWord == "") {
                     alert("Empty field. Must fill in Password")
-                } else if ("eMail" == "") {
+                } else if (eMail == "") {
                         alert("Empty field. Must fill in Email")
-                     } else if ("confirm_password" != passWord) {
+                     } else if (confirmPassword != passWord) {
                             alert("Passwords do not match. Please confirm correct password.")}
                          {
                              alert("Thank you for registering.")
                                 }
-            return false;
+                         return false;
              })
         )
     </script>

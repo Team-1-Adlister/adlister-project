@@ -2,11 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Viewing All The Ads" />
-    </jsp:include>
+    <title>${ad}</title>
 </head>
+
 <body>
+
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
@@ -16,12 +16,9 @@
         <div class="col-md-6">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
-            <a href="individualAd.jsp?id=${ad.id}">${ad.title}</a>
         </div>
     </c:forEach>
 </div>
-
-
 
 </body>
 </html>

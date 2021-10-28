@@ -11,4 +11,6 @@ public interface Ads {
     Long insert(Ad ad);
 
     Ad get(long i);
+
+    List<Ad> sortByDateDesc();
 }

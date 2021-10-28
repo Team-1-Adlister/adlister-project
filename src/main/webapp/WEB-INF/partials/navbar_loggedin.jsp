@@ -4,7 +4,8 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right align-content-center">
+            <li><a href="/ads/create"><button type="button">Create An Ad</button></a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->

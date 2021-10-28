@@ -9,4 +9,6 @@ public interface Users {
     Long insert(User user);
 
     boolean checkUsernameExists(String username);
+
+    void edit(String username, String newUsername, String newPassword);
 }

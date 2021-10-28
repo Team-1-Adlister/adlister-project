@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.MySQLUsersDao;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,30 +28,17 @@ public class EditUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String newUsername = request.getParameter("newUsername");
         String newPassword = request.getParameter("newPassword");
-        String passwordConfirmation = request.getParameter("confirm_password");
+        String passwordConfirmation = request.getParameter("confirmPassword");
+        User user = (User) request.getSession().getAttribute("user");
 
-        // validate input
-
-        boolean inputHasErrors = username.isEmpty()
-                || email.isEmpty()
-                || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
-
-        if (DaoFactory.getUsersDao().checkUsernameExists(username)) {
-            JOptionPane.showMessageDialog(null, "This username already exists!!");
-            response.sendRedirect("/register");
-            return;
+        boolean usernameExists = DaoFactory.getUsersDao().checkUsernameExists(newUsername);
+        if (!newUsername.isEmpty()&&!newPassword.isEmpty()&&!passwordConfirmation.isEmpty()
+                &&Password.check(passwordConfirmation, user.getPassword())&&!usernameExists){
+            DaoFactory.getUsersDao().edit(user.getUsername(), newUsername, newPassword);
+            response.sendRedirect("/logout");
+        } else {
+            System.out.println("Unsuccessful change of user");
+            response.sendRedirect("/edituser");
         }
-
-        if (inputHasErrors) {
-            response.sendRedirect("/register");
-            return;
-        }
-
-        // create and save a new user
-        User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
     }
-
 }

@@ -22,6 +22,23 @@ public class MySQLUsersDao implements Users {
     }
 
 
+    public boolean checkUsernameExists(String username) {
+
+        boolean usernameExists = false;
+        try {
+            PreparedStatement stmt = connection.prepareStatement("select * from users where username= ?");
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                usernameExists = true;
+            }
+        }catch(Exception e){
+            System.out.println("SQL Exception: " + e.toString());
+        }
+        return usernameExists;
+    }
+
+
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";

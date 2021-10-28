@@ -19,10 +19,14 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
+    <a href="/ads?sortBy=dateDesc" style="color: black"><button type="button">Sort By Date Desc</button></a>
+    <a href="/ads" style="color: black"><button type="button">Sort By Date Asc</button></a>
+
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
+            <p>${ad.date}</p>
         </div>
     </c:forEach>
 </div>

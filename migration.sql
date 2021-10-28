@@ -16,7 +16,12 @@ CREATE TABLE ads (
     user_id INT UNSIGNED NOT NULL,
     title VARCHAR(240) NOT NULL,
     description TEXT NOT NULL,
+    date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE
 );
+
+SELECT * FROM ads order by date ASC;
+
+SELECT * FROM ads order by date DESC;

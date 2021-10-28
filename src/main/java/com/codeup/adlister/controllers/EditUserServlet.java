@@ -1,2 +1,56 @@
-package com.codeup.adlister.controllers;public class EditUserServlet {
+package com.codeup.adlister.controllers;
+
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.MySQLUsersDao;
+import com.codeup.adlister.models.User;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
+import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+@WebServlet(name = "controllers.EditUserServlet", urlPatterns = "/edituser")
+public class EditUserServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return;
+        }
+        request.getRequestDispatcher("/WEB-INF/editUser.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String newUsername = request.getParameter("newUsername");
+        String newPassword = request.getParameter("newPassword");
+        String passwordConfirmation = request.getParameter("confirm_password");
+
+        // validate input
+
+        boolean inputHasErrors = username.isEmpty()
+                || email.isEmpty()
+                || password.isEmpty()
+                || (! password.equals(passwordConfirmation));
+
+        if (DaoFactory.getUsersDao().checkUsernameExists(username)) {
+            JOptionPane.showMessageDialog(null, "This username already exists!!");
+            response.sendRedirect("/register");
+            return;
+        }
+
+        if (inputHasErrors) {
+            response.sendRedirect("/register");
+            return;
+        }
+
+        // create and save a new user
+        User user = new User(username, email, password);
+        DaoFactory.getUsersDao().insert(user);
+        response.sendRedirect("/login");
+    }
+
 }

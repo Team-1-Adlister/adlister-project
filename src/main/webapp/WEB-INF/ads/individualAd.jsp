@@ -3,9 +3,10 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Viewing All The Ads" />
+        <jsp:param name="title" value="${ad.title}" />
     </jsp:include>
 </head>
+
 <body>
 <c:choose>
     <c:when test="${sessionScope.user != null}">
@@ -17,17 +18,13 @@
 </c:choose>
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>${ad.title}</h1>
 
-    <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <h2><a href="ads/individualAd?id=${ad.id}">${ad.title}</a></h2>
             <p>${ad.description}</p>
         </div>
-    </c:forEach>
+
 </div>
-
-
 
 </body>
 </html>

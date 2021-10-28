@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h1>Create a new Ad</h1>
-        <form action="/ads/create" method="post">
+        <form name = "adForm" action="/ads/create" method="post" onsubmit="return validateTitle()">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
@@ -22,3 +22,26 @@
     </div>
 </body>
 </html>
+
+<script>
+    // PrintWriter pw = null;
+    // pw = response.getWriter();
+    // String adTitle = request.getParameter("title");
+    // String adDescr = request.getParameter("description");
+    // response.setContentType("text/html");
+function validateTitle(){
+    const adTitle = document.forms["adForm"]["title"].value;
+    if (adTitle == null || adTitle.length() === 0 || adTitle === ""){
+        alert("Please input a title");
+        return false;
+    }
+}
+    // if (adTitle == null || adTitle.length() === 0 || adTitle.equals(" ")) {
+    //     alert("Please input a title");
+    // }
+    //
+    // if (adDescr == null || adDescr.length() === 0 || adDescr.equals(" ")) {
+    //     alert("Please input a description");
+    // }
+
+</script>

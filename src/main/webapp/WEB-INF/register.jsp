@@ -32,9 +32,8 @@
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-        $.get('${pageContext.request.contextPath}/register',
 
-        $(document).getElementById(function registerValidation() {
+       function registerValidation() {
 
             let userName = document.forms["register"]["username"].value;
             let passWord = document.forms["register"]["password"].value;
@@ -43,18 +42,19 @@
 
             if (userName === "") {
                 alert("Empty field. Must fill in Username")
-            } else if (passWord === "") {
+            }
+            if (passWord === "") {
                     alert("Empty field. Must fill in Password")
-                } else if (eMail === "") {
+                }
+            if (eMail === "") {
                         alert("Empty field. Must fill in Email")
-                     } else if (confirmPassword !== passWord) {
-                            alert("Passwords do not match. Please confirm correct password.")}
-                         {
-                             alert("Thank you for registering.")
-                                }
-                         return false;
-             })
-        )
+                     }
+            if (confirmPassword !== passWord) {
+                            alert("Passwords do not match. Please confirm correct password.")
+            }
+
+       }
+
     </script>
 
 </body>

@@ -41,13 +41,13 @@
             let eMail = document.forms["register"]["email"].value;
             let confirmPassword = document.forms["register"]["confirm_password"].value;
 
-            if (userName == "") {
+            if (userName === "") {
                 alert("Empty field. Must fill in Username")
-            } else if (passWord == "") {
+            } else if (passWord === "") {
                     alert("Empty field. Must fill in Password")
-                } else if (eMail == "") {
+                } else if (eMail === "") {
                         alert("Empty field. Must fill in Email")
-                     } else if (confirmPassword != passWord) {
+                     } else if (confirmPassword !== passWord) {
                             alert("Passwords do not match. Please confirm correct password.")}
                          {
                              alert("Thank you for registering.")

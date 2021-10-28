@@ -2,22 +2,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${ad}</title>
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="${ad.title}" />
+    </jsp:include>
 </head>
 
 <body>
-
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<c:choose>
+    <c:when test="${sessionScope.user != null}">
+        <jsp:include page="/WEB-INF/partials/navbar_loggedin.jsp" />
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    </c:otherwise>
+</c:choose>
 
 <div class="container">
-    <h1>Here is one ad</h1>
+    <h1>${ad.title}</h1>
 
-<%--    <c:forEach var="ad" items="${ads}">--%>
         <div class="col-md-6">
-            <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
-<%--    </c:forEach>--%>
+
 </div>
 
 </body>

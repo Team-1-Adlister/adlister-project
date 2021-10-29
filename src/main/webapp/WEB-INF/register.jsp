@@ -9,7 +9,7 @@
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
-        <form action="/register" method="post">
+        <form name ="register" action="/register" method="post" onsubmit="return registerValidation()">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
@@ -29,5 +29,33 @@
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+       function registerValidation() {
+
+            let userName = document.forms["register"]["username"].value;
+            let passWord = document.forms["register"]["password"].value;
+            let eMail = document.forms["register"]["email"].value;
+            let confirmPassword = document.forms["register"]["confirm_password"].value;
+
+            if (userName === "") {
+                alert("Empty field. Must fill in Username")
+            }
+            if (passWord === "") {
+                    alert("Empty field. Must fill in Password")
+                }
+            if (eMail === "") {
+                        alert("Empty field. Must fill in Email")
+                     }
+            if (confirmPassword !== passWord) {
+                            alert("Passwords do not match. Please confirm correct password.")
+            }
+
+       }
+
+    </script>
+
 </body>
 </html>

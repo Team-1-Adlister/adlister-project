@@ -3,9 +3,10 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Welcome to my site!" />
+        <jsp:param name="title" value="${ad.title}" />
     </jsp:include>
 </head>
+
 <body>
 <c:choose>
     <c:when test="${sessionScope.user != null}">
@@ -15,8 +16,15 @@
         <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     </c:otherwise>
 </c:choose>
-    <div class="container">
-        <h1>Welcome to the Adlister!</h1>
-    </div>
+
+<div class="container">
+    <h1>${ad.title}</h1>
+
+        <div class="col-md-6">
+            <p>${ad.description}</p>
+        </div>
+
+</div>
+
 </body>
 </html>

@@ -9,4 +9,12 @@ public interface Ads {
     List<Ad> all();
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
+
+    Ad get(long i);
+
+    List<Ad> sortByDateDesc();
+
+    List<Ad> userAds(long userId);
+
+    List<Ad> sortByUserDateDesc(long userId);
 }

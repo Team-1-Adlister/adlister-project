@@ -57,7 +57,24 @@
 
     </script>
 
-
+<%--    <form action="" name="myform">--%>
+<%--        <input type="text" name="name">--%>
+<%--        <div id="theName"></div>--%>
+<%--    </form>--%>
+    <script type="text/javascript">
+        (function() {
+            var form = document.getElementsByName('register')[0];
+            if (localStorage['name'] !== undefined) {
+                var displayArea = document.getElementById('theName');
+                displayArea.textContent = localStorage['name'];
+            }
+            form.addEventListener('submit', function() {
+                var nameField = document.getElementsByName('name')[0];
+                localStorage['name'] = nameField.value;
+            }, false);
+        })();
+    </script>
+<%--    https://stackoverflow.com/questions/4732270/making-sticky-javascript--%>
 
 </body>
 </html>

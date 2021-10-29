@@ -13,9 +13,9 @@ import java.io.IOException;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getQueryString() == null){
-            request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        } else if (request.getParameter("sortBy").equals("dateDesc")){
             request.setAttribute("ads", DaoFactory.getAdsDao().sortByDateDesc());
+        } else if (request.getParameter("sortBy").equals("dateAsc")){
+            request.setAttribute("ads", DaoFactory.getAdsDao().all());
         } else {
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
         }

@@ -13,4 +13,8 @@ public interface Ads {
     Ad get(long i);
 
     List<Ad> sortByDateDesc();
+
+    List<Ad> userAds(long userId);
+
+    List<Ad> sortByUserDateDesc(long userId);
 }

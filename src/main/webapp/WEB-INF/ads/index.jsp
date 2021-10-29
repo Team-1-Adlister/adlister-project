@@ -21,8 +21,8 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
         <div style="float:right;">
-            <a href="/ads?sortBy=dateDesc" style="color: black"><button type="button">Sort By Date Desc</button></a>
-            <a href="/ads" style="color: black"><button type="button">Sort By Date Asc</button></a>
+            <a href="/ads" style="color: black"><button type="button">Sort By Date Desc</button></a>
+            <a href="/ads?sortBy=dateAsc" style="color: black"><button type="button">Sort By Date Asc</button></a>
         </div>
         <c:forEach var="ad" items="${ads}">
             <div class="col-md-12" style="background-color: #F8F8F8; margin: 5px; border-radius: 5px; box-shadow: lightgrey 3px 3px 3px">

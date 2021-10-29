@@ -15,7 +15,18 @@ public class ListAdsDao implements Ads {
         return ads;
     }
 
+    @Override
     public List<Ad> sortByDateDesc() {
+        return null;
+    }
+
+    @Override
+    public List<Ad> userAds(long userId) {
+        return null;
+    }
+
+    @Override
+    public List<Ad> sortByUserDateDesc(long userId) {
         return null;
     }
 

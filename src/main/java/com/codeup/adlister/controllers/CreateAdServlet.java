@@ -16,19 +16,6 @@ import java.util.ArrayList;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        PrintWriter pw = null;
-//        pw = response.getWriter();
-//        String adTitle = request.getParameter("title");
-//        String adDescr = request.getParameter("description");
-//        response.setContentType("text/html");
-//
-//        if (adTitle == null || adTitle.length() == 0 || adTitle.equals(" ")) {
-//            pw.println("<h4 style='color:red'>Please input a title.</h4>");
-//            return;
-//        }
-
-
-
 //        **********************
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
@@ -46,14 +33,15 @@ public class CreateAdServlet extends HttpServlet {
         response.setContentType("text/html");
 
         if (adTitle == null || adTitle.length() == 0 || adTitle.equals(" ")) {
-            pw.println("<h1 style='color:red'>Please input a title.</h1>");
+            response.sendRedirect("/ads/create");
             return;
         }
 
         if (adDescr == null || adDescr.length() == 0 || adDescr.equals(" ")) {
-            pw.println("<h1 style='color:red'>Please input a description.</h1>");
+            response.sendRedirect("/ads/create");
             return;
         }
+
 
 
 

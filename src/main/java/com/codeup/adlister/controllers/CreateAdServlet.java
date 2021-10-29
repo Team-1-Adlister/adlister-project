@@ -39,21 +39,21 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        PrintWriter pw = null;
-//        pw = response.getWriter();
-//        String adTitle = request.getParameter("title");
-//        String adDescr = request.getParameter("description");
-//        response.setContentType("text/html");
-//
-//        if (adTitle == null || adTitle.length() == 0 || adTitle.equals(" ")) {
-//            pw.println("<h1 style='color:red'>Please input a title.</h1>");
-//            return;
-//        }
-//
-//        if (adDescr == null || adDescr.length() == 0 || adDescr.equals(" ")) {
-//            pw.println("<h1 style='color:red'>Please input a description.</h1>");
-//            return;
-//        }
+        PrintWriter pw = null;
+        pw = response.getWriter();
+        String adTitle = request.getParameter("title");
+        String adDescr = request.getParameter("description");
+        response.setContentType("text/html");
+
+        if (adTitle == null || adTitle.length() == 0 || adTitle.equals(" ")) {
+            pw.println("<h1 style='color:red'>Please input a title.</h1>");
+            return;
+        }
+
+        if (adDescr == null || adDescr.length() == 0 || adDescr.equals(" ")) {
+            pw.println("<h1 style='color:red'>Please input a description.</h1>");
+            return;
+        }
 
 
 

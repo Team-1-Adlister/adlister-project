@@ -5,22 +5,7 @@
         <jsp:param name="title" value="Create a new Ad" />
     </jsp:include>
 
-<%--    <script>--%>
-<%--        // PrintWriter pw = null;--%>
-<%--        // pw = response.getWriter();--%>
-<%--        // String adTitle = request.getParameter("title");--%>
-<%--        // String adDescr = request.getParameter("description");--%>
-<%--        // response.setContentType("text/html");--%>
-<%--        function validateTitle(){--%>
-<%--            const adTitle = document.forms["/ads/create"]["title"].value;--%>
-<%--            if (adTitle == null || adTitle.length() === 0 || adTitle === ""){--%>
-<%--                alert("Please input a title");--%>
-<%--                return false;--%>
-<%--            }--%>
-<%--        }--%>
 
-
-<%--    </script>--%>
 </head>
 <body>
     <div class="container">

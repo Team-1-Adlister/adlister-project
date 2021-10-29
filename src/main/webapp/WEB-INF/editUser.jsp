@@ -15,9 +15,9 @@
             <label for="newUsername">New Username:</label>
             <input type="text" id="newUsername" name="newUsername"><br><br>
             <label for="newPassword">New Password:</label>
-            <input type="text" id="newPassword" name="newPassword"><br><br>
+            <input type="password" id="newPassword" name="newPassword"><br><br>
             <label for="confirmPassword">Confirm Current Password:</label>
-            <input type="text" id="confirmPassword" name="confirmPassword"><br><br>
+            <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
             <button type="submit">Submit</button>
         </form>
 </div>

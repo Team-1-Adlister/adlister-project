@@ -8,24 +8,42 @@
 </head>
 
 <body>
-
+</div>
+<c:choose>
+    <c:when test="${sessionScope.user != null}">
+        <jsp:include page="/WEB-INF/partials/navbar_loggedin.jsp" />
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    </c:otherwise>
+</c:choose>
 
 <div class="container">
+    <c:forEach var="ad" items="${ads}">
+1
 
     <div class="col-md-12" style="background-color: #F8F8F8; margin: 5px; border-radius: 5px; box-shadow: lightgrey 3px 3px 3px">
         <h2>${ad.title}</h2>
         <p>${ad.description}</p>
+
     </div>
-    <c:choose>
-        <c:when test="${sessionScope.user != null}">
-            <jsp:include page="/WEB-INF/partials/navbar_loggedin.jsp" />
-        </c:when>
-        <c:otherwise>
-            <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-        </c:otherwise>
-    </c:choose>
-
+        </c:forEach>
+<div class="col-md-10">
+    <br>
+    <h2>Current Ad: ${ad.title}</h2>
+    <br><br>
+    <form action="/ads/edit" method="post">
+        <label for="currentAdId" hidden></label>
+        <input type="hidden" id="currentAdId" name="currentAdId" value="${ad.id}">
+        <label for="newAdTitle">New Ad Title:</label>
+        <input type="text" id="newAdTitle" name="newAdTitle" value="${ad.title}"><br><br>
+        <label for="newAdDescription">New Description:</label><br>
+        <textarea cols="50" rows="6" id="newAdDescription" name="newAdDescription" value="${ad.description}"></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
 </div>
-
+        <script>
+            document.getElementById("newAdDescription").innerHTML="${ad.description}";
+        </script>
 </body>
 </html>

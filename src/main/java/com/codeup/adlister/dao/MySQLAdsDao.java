@@ -153,7 +153,7 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> bySearchTerm(String searchTerm) {
-        String query = "SELECT * FROM ads WHERE title like ?;";
+        String query = "SELECT * FROM ads WHERE title like ? order by date desc;";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);

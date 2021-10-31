@@ -17,6 +17,14 @@
 </c:choose>
 
 <div class="container">
+    <div class="text-center">
+        <form method="post" action="/ads/search">
+            <label for="searchTerm">
+                <input type="search" name="searchTerm" id="searchTerm">
+            </label>
+            <button type="submit">Search</button>
+        </form>
+    </div>
     <h1 style="text-align: center;">All Ads</h1>
     <div class="col-md-1"></div>
     <div class="col-md-10">

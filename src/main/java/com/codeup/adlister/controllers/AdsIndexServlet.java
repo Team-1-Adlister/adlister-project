@@ -12,13 +12,21 @@ import java.io.IOException;
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getQueryString() == null){
+        System.out.println(request.getParameter("searchTerm"));
+        if (request.getQueryString() == null && request.getParameter("searchTerm") == null){
             request.setAttribute("ads", DaoFactory.getAdsDao().sortByDateDesc());
         } else if (request.getParameter("sortBy").equals("dateAsc")){
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        } else if (request.getParameter("searchTerm") != null) {
+            request.setAttribute("ads", DaoFactory.getAdsDao().bySearchTerm(request.getParameter("searchTerm")));
         } else {
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
         }
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String searchTerm = request.getParameter("searchTerm");
+        request.setAttribute("searchTerm", searchTerm);
+        response.sendRedirect("/ads");
     }
 }

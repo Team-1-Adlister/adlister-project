@@ -18,7 +18,7 @@
 
 <div class="container">
     <div class="text-center">
-        <form method="post" action="/ads/search">
+        <form method="post" action="/ads">
             <label for="searchTerm">
                 <input type="search" name="searchTerm" id="searchTerm">
             </label>

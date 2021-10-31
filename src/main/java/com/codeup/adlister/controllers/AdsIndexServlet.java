@@ -27,6 +27,7 @@ public class AdsIndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchTerm = request.getParameter("searchTerm");
         request.setAttribute("searchTerm", searchTerm);
-        response.sendRedirect("/ads");
+        request.setAttribute("ads", DaoFactory.getAdsDao().bySearchTerm(request.getParameter("searchTerm")));
+        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 }

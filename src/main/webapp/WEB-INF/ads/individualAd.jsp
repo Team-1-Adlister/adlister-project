@@ -17,14 +17,23 @@
     </c:otherwise>
 </c:choose>
 
-<div class="container">
-    <h1>${ad.title}</h1>
 
-        <div class="col-md-6">
+<div class="container">
+
+        <div class="col-md-12" style="background-color: #F8F8F8; margin: 5px; border-radius: 5px; box-shadow: lightgrey 3px 3px 3px">
+            <h2>${ad.title}</h2>
             <p>${ad.description}</p>
+
+            <p>Listed by: ${createdBy.username} on ${ad.date}</p>
+            <a href="mailto:${createdBy.email}">Email ${createdBy.username}</a>
         </div>
+<c:choose>
+    <c:when test="${sessionScope.user.id == ad.userId}">
+<%--    currently logged in user is the user that created this ad--%>
+        <jsp:include page="/WEB-INF/partials/edit-and-delete.jsp" />
+    </c:when>
+</c:choose>
 
 </div>
-
 </body>
 </html>

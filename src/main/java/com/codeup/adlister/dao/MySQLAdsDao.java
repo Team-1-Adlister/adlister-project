@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -120,4 +121,34 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
+
+//    @Override
+//    public void delete(String id) {
+//        PreparedStatement stmt = null;
+//        try {
+//            stmt = connection.prepareStatement("DELETE FROM ads WHERE id = ?");
+//            stmt.setLong(1, Long.parseLong(id));
+//            ResultSet rs = stmt.executeQuery();
+//            createAdsFromResults(rs);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error deleting add.", e);
+//        }
+//    }
+
+
+    @Override
+    public void editAd(Ad ad) {
+        String query = "UPDATE ads SET id = ?, title = ?,  description = ? WHERE id = ?;";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad.getId());
+            stmt.setString(2, ad.getTitle());
+            stmt.setString(3, ad.getDescription());
+            stmt.setLong(4,ad.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error editing ad", e);
+        }
+    }
+
 }

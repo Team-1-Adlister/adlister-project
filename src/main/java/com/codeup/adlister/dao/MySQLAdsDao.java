@@ -122,18 +122,17 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-//    @Override
-//    public void delete(String id) {
-//        PreparedStatement stmt = null;
-//        try {
-//            stmt = connection.prepareStatement("DELETE FROM ads WHERE id = ?");
-//            stmt.setLong(1, Long.parseLong(id));
-//            ResultSet rs = stmt.executeQuery();
-//            createAdsFromResults(rs);
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error deleting add.", e);
-//        }
-//    }
+    @Override
+    public void delete(long id) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("DELETE FROM ads WHERE id = ?;");
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting add.", e);
+        }
+    }
 
 
     @Override

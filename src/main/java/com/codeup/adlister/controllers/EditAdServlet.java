@@ -27,22 +27,24 @@ public class EditAdServlet extends HttpServlet {
         long newAdId = Long.parseLong(currentAdId);
         String newTitle = request.getParameter("newAdTitle");
         String newDescription = request.getParameter("newAdDescription");
-//        Ad editedAd = new Ad(
-//                newAdId,
-//                newTitle,
-//                newDescription
-//        );
-        DaoFactory.getAdsDao().editAd(newAdId, newTitle, newDescription);
+        User user = (User) request.getSession().getAttribute("user");
+
+        // Prevents a user from editing an ad that does not belong to them, had they had access to edit button
+        Ad oldAd = DaoFactory.getAdsDao().get(newAdId);
+        if (oldAd.getUserId() != user.getId()) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        Ad editedAd = new Ad(
+                newAdId,
+                user.getId(),
+                newTitle,
+                newDescription
+        );
+        DaoFactory.getAdsDao().editAd(editedAd);
         response.sendRedirect("/profile");
     }
  }
 
-//    User user = (User) request.getSession().getAttribute("user");
-//    Ad ad = new Ad(
-//            user.getId(),
-//            request.getParameter("title"),
-//            request.getParameter("description")
-//    );
-//        DaoFactory.getAdsDao().insert(ad);
-//                response.sendRedirect("/ads");
-//                }
+

@@ -1,8 +1,6 @@
 package com.codeup.adlister.models;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Ad {
     private long id;

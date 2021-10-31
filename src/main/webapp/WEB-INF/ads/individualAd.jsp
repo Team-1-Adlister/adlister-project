@@ -23,24 +23,17 @@
         <div class="col-md-12" style="background-color: #F8F8F8; margin: 5px; border-radius: 5px; box-shadow: lightgrey 3px 3px 3px">
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
-<%--            <c:choose>--%>
-<%--                <c:when test="${sessionScope.user != null}">--%>
-<%--                    <jsp:include page="/WEB-INF/partials/edit-and-delete.jsp" />--%>
-<%--                </c:when>--%>
-<%--                <c:otherwise>--%>
-<%--                    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
-<%--                </c:otherwise>--%>
-<%--            </c:choose>--%>
-            <p>Listed by: ${user.username} on ${ad.date}</p>
-            <a href="mailto:${user.email}">Email ${user.username}</a>
+
+            <p>Listed by: ${createdBy.username} on ${ad.date}</p>
+            <a href="mailto:${createdBy.email}">Email ${createdBy.username}</a>
         </div>
 <c:choose>
-    <c:when test="${sessionScope.user != null}">
+    <c:when test="${sessionScope.user.id == ad.userId}">
+<%--    currently logged in user is the user that created this ad--%>
         <jsp:include page="/WEB-INF/partials/edit-and-delete.jsp" />
     </c:when>
 </c:choose>
 
 </div>
-
 </body>
 </html>

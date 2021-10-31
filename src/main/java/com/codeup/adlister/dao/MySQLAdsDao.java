@@ -112,9 +112,10 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Ad get(long id) {
-        PreparedStatement stmt = null;
+        String query = "SELECT * FROM ads WHERE id = ?;";
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = " + id);
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs).get(0);
         } catch (SQLException e) {
@@ -147,6 +148,20 @@ public class MySQLAdsDao implements Ads {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error editing ad", e);
+        }
+    }
+
+    @Override
+    public List<Ad> bySearchTerm(String searchTerm) {
+        String query = "SELECT * FROM ads WHERE title like ? order by date desc;";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, "%" + searchTerm + "%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
 

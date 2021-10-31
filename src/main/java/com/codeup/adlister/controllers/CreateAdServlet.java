@@ -16,7 +16,6 @@ import java.util.ArrayList;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        **********************
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
@@ -26,30 +25,19 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter pw = null;
-        pw = response.getWriter();
         String adTitle = request.getParameter("title");
-        String adDescr = request.getParameter("description");
-        response.setContentType("text/html");
+        String description = request.getParameter("description");
 
         if (adTitle == null || adTitle.length() == 0 || adTitle.equals(" ")) {
             response.sendRedirect("/ads/create");
             return;
         }
 
-        if (adDescr == null || adDescr.length() == 0 || adDescr.equals(" ")) {
+        if (description == null || description.length() == 0 || description.equals(" ")) {
             response.sendRedirect("/ads/create");
             return;
         }
 
-
-
-
-
-
-
-
-//        **************************
         User user = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(
             user.getId(),

@@ -17,13 +17,32 @@
 </c:choose>
 
 <div class="container">
-    <h1 style="text-align: center;">All Ads</h1>
+    <div class="text-center">
+        <form method="post" action="/ads">
+            <label for="searchTerm">
+                <input type="search" name="searchTerm" id="searchTerm">
+            </label>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <c:choose>
+        <c:when test="${requestScope.searchTerm == null}">
+            <h1 style="text-align: center;">All Ads</h1>
+        </c:when>
+        <c:otherwise>
+            <h1 style="text-align: center;">Search term = "${requestScope.searchTerm}"</h1>
+        </c:otherwise>
+    </c:choose>
     <div class="col-md-1"></div>
     <div class="col-md-10">
-        <div style="float:right;">
-            <a href="/ads" style="color: black"><button type="button">Sort By Date Desc</button></a>
-            <a href="/ads?sortBy=dateAsc" style="color: black"><button type="button">Sort By Date Asc</button></a>
-        </div>
+    <c:choose>
+        <c:when test="${requestScope.searchTerm == null}">
+            <div style="float:right;">
+                <a href="/ads" style="color: black"><button type="button">Sort By Date Desc</button></a>
+                <a href="/ads?sortBy=dateAsc" style="color: black"><button type="button">Sort By Date Asc</button></a>
+            </div>
+        </c:when>
+    </c:choose>
         <c:forEach var="ad" items="${ads}">
             <div class="col-md-12" style="background-color: #F8F8F8; margin: 5px; border-radius: 5px; box-shadow: lightgrey 3px 3px 3px">
                 <h2><a href="ads/individualAd?id=${ad.id}">${ad.title}</a></h2>

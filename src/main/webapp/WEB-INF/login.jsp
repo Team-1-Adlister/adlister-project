@@ -9,7 +9,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Please Log In</h1>
-        <form action="/login" method="POST">
+        <form name ="register" action="/login" method="POST" onsubmit="return loginProfileValidation()">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
@@ -22,4 +22,19 @@
         </form>
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    function loginProfileValidation() {
+        let loginUsername = document.forms["/login"]["username"].value;
+        let loginPassword = document.forms["/login"]["password"].value;
+
+        if (loginUsername === "") {
+            alert("Empty field. Please enter your username.")
+        }
+        if (loginPassword === "") {
+            alert("Empty field. Please enter your password.")
+        }
+    }
+</script>
 </html>

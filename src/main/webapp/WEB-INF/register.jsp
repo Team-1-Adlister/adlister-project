@@ -21,15 +21,9 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${registerValidation eq true}">--%>
-                        <input id="password" name="password" class="form-control" type="password" value="">
-<%--                    </c:when>--%>
 
-<%--<c:otherwise>--%>
-<%--    <input id="password" name="password" class="form-control" type="password">--%>
-<%--</c:otherwise>--%>
-<%--                </c:choose>--%>
+                        <input id="password" name="password" class="form-control" type="password" value="">
+
 
             </div>
             <div class="form-group">
@@ -70,58 +64,6 @@
        }
 
     </script>
-
-<%--    <script type="text/javascript">--%>
-<%--        (function stickyFormUsername() {--%>
-<%--            var form = document.getElementsByName('username')[0];--%>
-<%--            if (localStorage['username'] !== "") {--%>
-<%--                var displayArea = document.getElementById('username');--%>
-<%--                displayArea.textContent = localStorage['username'];--%>
-<%--            }--%>
-<%--            form.addEventListener('submit', function() {--%>
-<%--                var nameField = document.getElementsByName('username')[0];--%>
-<%--                localStorage['username'] = nameField.value;--%>
-<%--            }, false);--%>
-
-<%--        })();--%>
-<%--        // (function stickyFormPassword() {--%>
-<%--        //     var form = document.getElementsByName('password')[0];--%>
-<%--        //     if (localStorage['password'] !== undefined) {--%>
-<%--        //         var displayArea = document.getElementById('password');--%>
-<%--        //         displayArea.textContent = localStorage['password'];--%>
-<%--        //     }--%>
-<%--        //     form.addEventListener('submit', function() {--%>
-<%--        //         var nameField = document.getElementsByName('password')[0];--%>
-<%--        //         localStorage['password'] = nameField.value;--%>
-<%--        //     }, false);--%>
-
-<%--        // })();--%>
-<%--        // (function stickyFormEmail() {--%>
-<%--        //     var form = document.getElementsByName('email')[0];--%>
-<%--        //     if (localStorage['email'] !== "") {--%>
-<%--        //         var displayArea = document.getElementById('email');--%>
-<%--        //         displayArea.textContent = localStorage['email'];--%>
-<%--        //     }--%>
-<%--        //     form.addEventListener('submit', function() {--%>
-<%--        //         var nameField = document.getElementsByName('email')[0];--%>
-<%--        //         localStorage['email'] = nameField.value;--%>
-<%--        //     }, false);--%>
-<%--        //--%>
-<%--        // })();--%>
-<%--        // (function stickyFormConfirmPassword() {--%>
-<%--        //     var form = document.getElementsByName('confirm_password')[0];--%>
-<%--        //     if (localStorage['confirm_password'] === undefined) {--%>
-<%--        //         var displayArea = document.getElementById('confirm_password');--%>
-<%--        //         displayArea.textContent = localStorage['confirm_password'];--%>
-<%--        //     }--%>
-<%--        //     form.addEventListener('submit', function() {--%>
-<%--        //         var nameField = document.getElementsByName('confirm_password')[0];--%>
-<%--        //         localStorage['confirm_password'] = nameField.value;--%>
-<%--        //     }, false);--%>
-
-<%--        // })();--%>
-<%--    </script>--%>
-<%--    https://stackoverflow.com/questions/4732270/making-sticky-javascript--%>
 
 </body>
 </html>

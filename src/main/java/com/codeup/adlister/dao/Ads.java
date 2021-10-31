@@ -19,4 +19,6 @@ public interface Ads {
     List<Ad> sortByUserDateDesc(long userId);
 
     void editAd(Ad ad);
+
+    void delete(long id);
 }

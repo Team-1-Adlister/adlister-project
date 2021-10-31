@@ -31,8 +31,10 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
-    public void editAd(Ad ad) {
-            }
+    public void editAd(Ad ad) {}
+            
+    @Override
+    public void delete(long id) {}
 
     @Override
     public List<Ad> bySearchTerm(String searchTerm) {

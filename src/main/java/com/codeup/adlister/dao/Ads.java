@@ -20,5 +20,5 @@ public interface Ads {
 
     void editAd(Ad ad);
 
-    List<Ad> bySearchTerm(String searchTerm);
+    void delete(long id);
 }

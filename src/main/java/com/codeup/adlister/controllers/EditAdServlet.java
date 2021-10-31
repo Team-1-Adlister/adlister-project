@@ -11,13 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.codeup.adlister.util.AccessControl.unauthorizedEdit;
+
 @WebServlet(name = "controllers.EditAdServlet", urlPatterns = "/ads/edit")
 public class EditAdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adId = request.getParameter("id");
+        long newAdId = Long.parseLong(adId);
+        User user = (User) request.getSession().getAttribute("user");
+        if (unauthorizedEdit(response, newAdId, user)) return;
         request.setAttribute("ad", DaoFactory.getAdsDao().get(Long.parseLong(adId)));
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
+
+
     }
 
     @Override
@@ -29,12 +36,7 @@ public class EditAdServlet extends HttpServlet {
         String newDescription = request.getParameter("newAdDescription");
         User user = (User) request.getSession().getAttribute("user");
 
-        // Prevents a user from editing an ad that does not belong to them, had they had access to edit button
-        Ad oldAd = DaoFactory.getAdsDao().get(newAdId);
-        if (oldAd.getUserId() != user.getId()) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN);
-            return;
-        }
+        if (unauthorizedEdit(response, newAdId, user)) return;
 
         Ad editedAd = new Ad(
                 newAdId,
@@ -45,6 +47,8 @@ public class EditAdServlet extends HttpServlet {
         DaoFactory.getAdsDao().editAd(editedAd);
         response.sendRedirect("/profile");
     }
- }
+
+
+}
 
 

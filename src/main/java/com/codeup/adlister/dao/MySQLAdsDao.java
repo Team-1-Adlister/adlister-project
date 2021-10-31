@@ -137,17 +137,15 @@ public class MySQLAdsDao implements Ads {
 
 
     @Override
-    public Long editAd(Ad ad) {
-        String query = "UPDATE ads SET id = ?, title = ? WHERE description = ? LIMIT 1;";
+    public void editAd(long id, String newTitle, String newDescription) {
+        String query = "UPDATE ads SET id = ?, title = ?,  description = ? WHERE id = ?;";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getId());
-            stmt.setString(2, ad.getTitle());
-            stmt.setString(3, ad.getDescription());
+            stmt.setLong(1, id);
+            stmt.setString(2, newTitle);
+            stmt.setString(3, newDescription);
+            stmt.setLong(4,id);
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error editing ad", e);
         }

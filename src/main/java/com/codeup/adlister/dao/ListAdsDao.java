@@ -31,9 +31,8 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
-    public Long editAd(Ad ad) {
-        return null;
-    }
+    public void editAd(long id, String title, String description) {
+            }
 
     public Long insert(Ad ad) {
         // make sure we have ads

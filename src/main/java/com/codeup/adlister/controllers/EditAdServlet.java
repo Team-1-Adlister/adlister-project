@@ -27,12 +27,12 @@ public class EditAdServlet extends HttpServlet {
         long newAdId = Long.parseLong(currentAdId);
         String newTitle = request.getParameter("newAdTitle");
         String newDescription = request.getParameter("newAdDescription");
-        Ad editedAd = new Ad(
-                editedAd.getId()
-                newTitle,
-                newDescription
-        );
-        DaoFactory.getAdsDao().editAd(editedAd);
+//        Ad editedAd = new Ad(
+//                newAdId,
+//                newTitle,
+//                newDescription
+//        );
+        DaoFactory.getAdsDao().editAd(newAdId, newTitle, newDescription);
         response.sendRedirect("/profile");
     }
  }

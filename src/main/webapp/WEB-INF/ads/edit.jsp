@@ -33,7 +33,6 @@
     <h2>Current Ad: ${ad.title}</h2>
     <br><br>
     <form action="/ads/edit" method="post">
-        <label for="currentAdId" hidden></label>
         <input type="hidden" id="currentAdId" name="currentAdId" value="${ad.id}">
         <label for="newAdTitle">New Ad Title:</label>
         <input type="text" id="newAdTitle" name="newAdTitle" value="${ad.title}"><br><br>
@@ -44,6 +43,7 @@
 </div>
         <script>
             document.getElementById("newAdDescription").innerHTML="${ad.description}";
+            console.log("${ad.id}");
         </script>
 </body>
 </html>

@@ -18,5 +18,5 @@ public interface Ads {
 
     List<Ad> sortByUserDateDesc(long userId);
 
-    Long editAd(Ad ad);
+    void editAd(long id, String title, String description);
 }

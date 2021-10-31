@@ -1,8 +1,6 @@
 package com.codeup.adlister.models;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Ad {
     private long id;
@@ -22,6 +20,13 @@ public class Ad {
         this.title = title;
         this.description = description;
         this.date = date;
+    }
+
+    public Ad(long id, long userId, String title, String description) {
+        this.id = id;
+        this.userId = userId;
+        this.title = title;
+        this.description = description;
     }
 
     public Ad(String title) {

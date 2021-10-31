@@ -30,6 +30,10 @@ public class ListAdsDao implements Ads {
         return null;
     }
 
+    @Override
+    public void editAd(Ad ad) {
+            }
+
     public Long insert(Ad ad) {
         // make sure we have ads
         if (ads == null) {
@@ -46,6 +50,8 @@ public class ListAdsDao implements Ads {
     public Ad get(long i) {
         return null;
     }
+
+
 
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();

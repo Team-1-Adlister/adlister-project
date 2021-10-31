@@ -11,4 +11,6 @@ public interface Users {
     boolean checkUsernameExists(String username);
 
     void edit(String username, String newUsername, String newPassword);
+
+    User get(long id);
 }

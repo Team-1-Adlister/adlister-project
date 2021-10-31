@@ -5,6 +5,8 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+
+
 </head>
 <body>
 <c:choose>
@@ -18,6 +20,7 @@
     <div class="container">
         <h1>Create a new Ad</h1>
         <form name="ads/create" action="/ads/create" method="post" onsubmit="return adsCreateValidation()">
+
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
@@ -45,3 +48,4 @@
     </script>
 </body>
 </html>
+

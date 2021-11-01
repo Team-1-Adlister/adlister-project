@@ -32,7 +32,7 @@
     <br>
     <h2>Current Ad: ${ad.title}</h2>
     <br><br>
-    <form action="/ads/edit" method="post">
+    <form name="editAd" action="/ads/edit" method="post" onsubmit="editAdValidation()">
         <input type="hidden" id="currentAdId" name="currentAdId" value="${ad.id}">
         <label for="newAdTitle">New Ad Title:</label>
         <input type="text" id="newAdTitle" name="newAdTitle" value="${ad.title}"><br><br>
@@ -44,6 +44,22 @@
         <script>
             document.getElementById("newAdDescription").innerHTML="${ad.description}";
             console.log("${ad.id}");
+
+
+                function editAdValidation() {
+                let newAdEdit = document.forms["editAd"]["newAdTitle"].value;
+                let newAdDesc = document.forms["editAd"]["newAdDescription"].value;
+
+                if (newAdEdit === "") {
+                alert("Empty field. Please enter an ad title.")
+
+            }
+                if (newAdDesc === "") {
+                alert("Empty field. Please enter an ad description.")
+
+            }
+            }
+
         </script>
 </body>
 </html>

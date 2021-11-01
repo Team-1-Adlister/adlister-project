@@ -4,5 +4,5 @@
         <button type="submit" class="btn btn-Danger">Delete Ad</button>
         <input type="hidden" id="id" name="id" value="${ad.id}">
     </form>
-</div>
 
+</div>

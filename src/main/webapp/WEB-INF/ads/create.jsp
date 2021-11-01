@@ -40,11 +40,28 @@
 
             if (adTitle === "") {
                 alert("Empty field. Must fill in an ad title.")
+                clearPassword(false, false)
             }
             if (adDescription === "") {
                 alert("Empty field. Must fill in an ad description.")
+                clearPassword(false, false)
             }
         }
+
+        function clearPassword(containsPassword, containsConfirmPassword) {
+            window.addEventListener("submit", function(event)  {
+                event.preventDefault();
+                if (containsPassword = true) {
+                    let password = document.getElementById("password");
+                    password.value = "";
+                } if (containsConfirmPassword = true) {
+                    let confirmPassword = document.getElementById("confirm_password");
+                    confirmPassword.value = "";
+                }
+            });
+
+        }
+
     </script>
 </body>
 </html>

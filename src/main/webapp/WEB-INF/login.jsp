@@ -31,10 +31,27 @@
 
         if (loginUsername === "") {
             alert("Empty field. Please enter your username.")
+            clearPassword(true, false)
         }
         if (loginPassword === "") {
             alert("Empty field. Please enter your password.")
+            clearPassword(true, false)
         }
     }
+
+    function clearPassword(containsPassword, containsConfirmPassword) {
+        window.addEventListener("submit", function(event)  {
+            event.preventDefault();
+            if (containsPassword = true) {
+                let password = document.getElementById("password");
+                password.value = "";
+            }else if (containsConfirmPassword = true) {
+                let confirmPassword = document.getElementById("confirm_password");
+                confirmPassword.value = "";
+            }
+        });
+    }
+
+
 </script>
 </html>

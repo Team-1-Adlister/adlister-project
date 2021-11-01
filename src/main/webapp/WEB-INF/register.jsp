@@ -46,24 +46,43 @@
 
             if (userName === "") {
                 alert("Empty field. Must fill in Username")
+                clearPassword(true, true)
 
             }
             if (passWord === "") {
                     alert("Empty field. Must fill in Password")
+                clearPassword(true, true)
 
                 }
             if (eMail === "") {
                         alert("Empty field. Must fill in Email")
+                clearPassword(true, true)
 
                      }
             if (confirmPassword !== passWord) {
                             alert("Passwords do not match. Please confirm correct password.")
+                clearPassword(true, true)
 
             }
 
        }
 
-    </script>
+       function clearPassword(containsPassword, containsConfirmPassword) {
+           window.addEventListener("submit", function(event)  {
+               event.preventDefault();
+               if (containsPassword = true) {
+                   let password = document.getElementById("password");
+                   password.value = "";
+               } if (containsConfirmPassword = true) {
+                   let confirmPassword = document.getElementById("confirm_password");
+                   confirmPassword.value = "";
+               }
+           });
+
+       }
+
+
+</script>
 
 </body>
 </html>

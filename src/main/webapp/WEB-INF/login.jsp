@@ -45,7 +45,7 @@
             if (containsPassword = true) {
                 let password = document.getElementById("password");
                 password.value = "";
-            }else if (containsConfirmPassword = true) {
+            } if (containsConfirmPassword = true) {
                 let confirmPassword = document.getElementById("confirm_password");
                 confirmPassword.value = "";
             }

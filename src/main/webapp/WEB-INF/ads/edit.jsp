@@ -23,8 +23,8 @@
 1
 
     <div class="col-md-12" style="background-color: #F8F8F8; margin: 5px; border-radius: 5px; box-shadow: lightgrey 3px 3px 3px">
-        <h2>${ad.title}</h2>
-        <p>${ad.description}</p>
+        <h2><c:out value="${ad.title}" /></h2>
+        <p><c:out value="${ad.description}" /></p>
 
     </div>
         </c:forEach>
@@ -43,7 +43,7 @@
 </div>
         <script>
             document.getElementById("newAdDescription").innerHTML="${ad.description}";
-            console.log("${ad.id}");
+
 
 
                 function editAdValidation() {

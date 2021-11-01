@@ -23,16 +23,16 @@
 1
 
     <div class="col-md-12" style="background-color: #F8F8F8; margin: 5px; border-radius: 5px; box-shadow: lightgrey 3px 3px 3px">
-        <h2><c:out value="${ad.title}" /></h2>
-        <p><c:out value="${ad.description}" /></p>
+        <h2>${ad.title}</h2>
+        <p>${ad.description}</p>
 
     </div>
         </c:forEach>
 <div class="col-md-10">
     <br>
-    <h2>Current Ad: <c:out value="${ad.title}" /></h2>
+    <h2>Current Ad: ${ad.title}</h2>
     <br><br>
-    <form action="/ads/edit" method="post">
+    <form name="editAd" action="/ads/edit" method="post" onsubmit="editAdValidation()">
         <input type="hidden" id="currentAdId" name="currentAdId" value="${ad.id}">
         <label for="newAdTitle">New Ad Title:</label>
         <input type="text" id="newAdTitle" name="newAdTitle" value="${ad.title}"><br><br>
@@ -43,6 +43,23 @@
 </div>
         <script>
             document.getElementById("newAdDescription").innerHTML="${ad.description}";
+            console.log("${ad.id}");
+
+
+                function editAdValidation() {
+                let newAdEdit = document.forms["editAd"]["newAdTitle"].value;
+                let newAdDesc = document.forms["editAd"]["newAdDescription"].value;
+
+                if (newAdEdit === "") {
+                alert("Empty field. Please enter an ad title.")
+
+            }
+                if (newAdDesc === "") {
+                alert("Empty field. Please enter an ad description.")
+
+            }
+            }
+
         </script>
 </body>
 </html>

@@ -18,7 +18,6 @@ public class IndividualAdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adId = request.getParameter("id");
-
         // Retrieve Ad object by its primary key id
         Ad ad = DaoFactory.getAdsDao().get(Long.parseLong(adId));
         // Retrieve user that created ad using the userId of the Ad we retrieved above
